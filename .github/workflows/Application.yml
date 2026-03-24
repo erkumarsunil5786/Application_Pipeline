@@ -25,7 +25,7 @@ jobs:
       - name: Build Artifacts
         run: npm run build
       - name: Upload a Build Artifact
-        uses:  actions/upload-artifact@v3.2.2
+        uses:  actions/upload-artifact@v4
         with:
           name: myartifact
           path: build/
