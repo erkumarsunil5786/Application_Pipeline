@@ -1,8 +1,31 @@
-trigger: none 
-pool: Default
-
-steps: 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'Write-Host "Hello World"'
+name: Application Pipeline
+on:
+  push:
+    branches:
+      - main
+      - devlop
+  pull_request:
+    branches:
+      - devlop
+jobs:
+  build:
+    name: Build Application
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 16.0
+      - name: Install dependencies
+        run: npm install
+      - name: Build Artifacts
+        run: npm run build
+        
+        
+        
+        
+        
+    
+  
