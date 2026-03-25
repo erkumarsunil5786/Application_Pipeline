@@ -28,13 +28,13 @@ jobs:
       - name: Upload a Build Artifact
         uses:  actions/upload-artifact@v4
         with:
-          name: Artifact-${{ github.run_number }}
+          name: Artifact-${{ github.run_id }}
           path: build/
         
       - name: Download a Build Artifact
         uses: actions/download-artifact@v8
         with:
-          name: Artifact-${{ github.run_number }}
+          name: Artifact-${{ github.run_id }}
           path: build/
      
         
