@@ -57,6 +57,7 @@ jobs:
          port: 22
          source: ${{ runner.temp }}/*
          target: /tmp/artifacts
+         strip_components: 4
            
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.0.3
