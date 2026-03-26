@@ -47,7 +47,29 @@ jobs:
          github-token: ${{ GITHUB.TOKEN }}
          name: Artifact-${{ github.run_id }}
          path: ${{ runner.temp }}
-        
+         
+     - name: Copy file via SSH password
+       uses: appleboy/scp-action@v1
+       with:
+         host: ${{ secrets.AZHOST }}
+         username:  ${{ secrets.AZUSERNAME }}
+         password: ${{ secrets.AZPASSWORD }}
+         port: 22
+         source: ${{ runner.temp }}/*
+         target: /tmp/artifacts
+           
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AZHOST }}
+          port: 22
+          username: ${{ secrets.AZUSERNAME }}
+          password: ${{ secrets.AZPASSWORD }}
+          script_stop: true
+          script: |
+            sudo cp -r /tmp/artifacts/* /var/www/html/
+            sudo systemctl restart nginx
+         
         
         
         
