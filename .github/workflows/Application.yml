@@ -68,6 +68,10 @@ jobs:
           password: ${{ secrets.AZPASSWORD }}
           script_stop: true
           script: |
+            sudo apt update -y 
+            sudo apt install nginx -y
+            sudo systemctl restart nginx
+            sudo rm -rf /var/www/html/*
             sudo cp -r /tmp/artifacts/* /var/www/html/
             sudo systemctl restart nginx
               
