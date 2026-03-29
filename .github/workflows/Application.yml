@@ -73,13 +73,13 @@
 #             sudo cp -rf /tmp/artifacts/* /var/www/html/
 #             sudo systemctl restart nginx
 
-name: Application Pipeline
+  name: Application Pipeline
 
-  on
+  on:
     push:
-    branches: [main, devlop]
+      branches: [main, devlop]
     pull_request:
-    branches: [devlop]
+      branches: [devlop]
 
   env:
     NODE_VERSION: "16.0"
