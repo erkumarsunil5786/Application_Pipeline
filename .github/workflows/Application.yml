@@ -144,8 +144,8 @@
             password: ${{ secrets.AZPASSWORD }}
             script: |
               sudo systemctl start nginx || sudo apt update -y && sudo apt install nginx -y
-              sudo rm -rf ${{ env.DEPLOY_PATH }}/*
-              sudo cp -rf ${{ env.TEMP_PATH }}/* ${{ env.DEPLOY_PATH }}/
+              sudo rm -rf ${{ env.DEPLOY_PATH }}/*    #/var/www/html/*
+              sudo cp -rf ${{ env.TEMP_PATH }}/*  ${{ env.DEPLOY_PATH }}/   #/tmp/artifacts /var/www/html/
               sudo systemctl restart nginx
 
            
