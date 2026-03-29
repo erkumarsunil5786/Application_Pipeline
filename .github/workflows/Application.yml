@@ -135,6 +135,7 @@
             port: 22
             source: ${{ runner.temp }}/*
             target: ${{ env.TEMP_PATH }}
+            strip_components: 4
 
         - name: SSH Remote Commands
           uses: appleboy/ssh-action@v1.0.3
